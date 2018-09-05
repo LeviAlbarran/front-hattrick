@@ -13,14 +13,14 @@ class Card extends React.Component {
   render() {
     const { data } = this.props;
     return (
-      <View style={styles.card}>
+      <View>
         <SwipeableParallaxCarousel
             data={data.images}
             navigation='true'
             navigationType='dots'     
         />
-        <Text style={{ marginHorizontal: 7, marginVertical: 4, fontSize: 20, textAlign: "left", fontWeight: "700" }}>CLUB PALESTINO</Text> 
-        <Stars style={{textAlign: "left", marginHorizontal: 7}}/> 
+        <Text style={{ marginVertical: 4, fontSize: 14, textAlign: "left", fontWeight: "700" }}>{data.name}</Text> 
+        <Stars style={{textAlign: "left"}}/> 
         
       </View> 
 
@@ -50,10 +50,3 @@ const data = [
 ];
 
 
-const styles = StyleSheet.create({
-  card: {
-    flex: 1,
-    //alignItems: 'center',
-    //justifyContent: 'center',
-  }
-});

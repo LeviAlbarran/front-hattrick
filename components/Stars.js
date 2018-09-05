@@ -10,7 +10,7 @@ class Starts extends React.Component {
             value={3.67}
             spacing={3}
             count={5}
-            starSize={15}
+            starSize={12}
             backingColor='cornsilk'
             fullStar= {require('../images/star-green.png')}
             emptyStar= {require('../images/start-opacity.png')}/>
@@ -18,6 +18,5 @@ class Starts extends React.Component {
     );
   }
 }
-
 export default Starts;
 
