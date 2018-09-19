@@ -19,12 +19,15 @@ import DateModal from '../components/DateModal'
 
 const { height, width } = Dimensions.get('window')
 class Fields extends Component {
-    state = {
-        isDateModalVisible: false
-      };
+    
+    constructor(props) {
+        super(props);
+        this.child = React.createRef();
+    }
 
-    _toggleModal = () =>
-    this.setState({ isDateModalVisible: !this.state.isDateModalVisible });
+    openCalendar = () => {
+        this.child.current.openCalendar();
+    };
 
     componentWillMount() {
         this.ScrollY = new Animated.Value(0);
@@ -47,14 +50,12 @@ class Fields extends Component {
             extrapolate:'clamp' 
         })
 
-
         this.animatedSearchTop = this.ScrollY.interpolate({
             inputRange: [0, 200],
             outputRange:[10, -20],
             extrapolate:'clamp' 
 
         })
-
         
         this.animatedTagTop = this.ScrollY.interpolate({
             inputRange: [0, 200],
@@ -63,10 +64,10 @@ class Fields extends Component {
         })
     }
 
-render() {
+    render() {
         return (
             <SafeAreaView style={{ flex: 1 }}>
-                <DateModal isVisible={this.state.isDateModalVisible}>
+                <DateModal ref={this.child}>
                 </DateModal>
                 <Animated.View style={{ flex: 1 }}>
                     <Animated.View style={{height: this.animatedHeaderHeight, 
@@ -79,7 +80,8 @@ render() {
                             shadowOffset: { width: 0, height: 0 },
                             shadowColor: 'black',
                             shadowOpacity: 0.2,
-                            borderRadius: 30,
+                            borderRadius
+                            : 30,
                             elevation: 1,
                             marginTop: Platform.OS == 'android' ? 30 : null,
                             opacity: this.animatedOpacity,
@@ -88,27 +90,22 @@ render() {
                             <Icon name="ios-search" size={20} style={{ paddingTop:4, marginLeft: 10, marginRight: 10}} />
                             <TextInput
                                 underlineColorAndroid="transparent"
-                                placeholder="Ej. Santiago"
+                                placeholder="Escribe una calle o complejo deportivo"
                                 placeholderTextColor="grey"
                                 style={{ flex: 1, fontWeight: '300', fontSize: 14, backgroundColor: 'white' }}
                             />
+
                         </Animated.View>
-                        <Animated.View style={{flexDirection: 'row', marginHorizontal: 20, 
+                        <Animated.View style={{
+                        flexDirection: 'row', marginHorizontal: 20, 
                         position: 'relative',
                         top: this.animatedTagTop,
                         backgroundColor: 'white' ,
                         zIndex:999
                         }}>
-                        
-                            <TouchableOpacity onPress={this._toggleModal()}>
-                                <Tag name='Fecha' icon="md-calendar"/>
-                            </TouchableOpacity>    
-                            <TouchableOpacity onPress={this._toggleModal()}>
-                                <Tag name='Filtros' icon="md-options" style={{marginLeft: 10}}/>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={this._toggleModal()}>
-                                <Tag name='Reservaciones' icon="ios-list-outline" style={{marginLeft: 10}}/>
-                            </TouchableOpacity>
+                            <Tag name='Fecha' icon="md-calendar" onPress={this.openCalendar}/>
+                            <Tag name='Filtros'  icon="md-options" onPress={this.openCalendar} style={{marginLeft: 10}}/>
+                            <Tag name='Reservaciones' icon="ios-list-outline" onPress={this.openCalendar} style={{marginLeft: 10}}/>  
                         </Animated.View>
                     </Animated.View>
                     <ScrollView

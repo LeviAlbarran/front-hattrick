@@ -68,6 +68,8 @@ export default createBottomTabNavigator({
     
 },
 {
+  animationEnabled: true,
+  swipeEnabled: true,
   tabBarOptions: {
     activeTintColor: '#1dbb38',
     inactiveTintColor: 'black',

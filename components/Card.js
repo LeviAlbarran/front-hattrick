@@ -20,8 +20,7 @@ class Card extends React.Component {
             navigationType='dots'     
         />
         <Text style={{ marginVertical: 4, fontSize: 14, textAlign: "left", fontWeight: "700" }}>{data.name}</Text> 
-        <Stars style={{textAlign: "left"}}/> 
-        
+        <Stars style={{textAlign: "left"}}/>         
       </View> 
 
     );
