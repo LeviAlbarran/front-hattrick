@@ -31,8 +31,8 @@ class Fields extends Component {
 
     componentWillMount() {
         this.ScrollY = new Animated.Value(0);
-        this.startHeaderHeight = 30;
-        this.endHeaderHeight = 0;
+        this.startHeaderHeight = 100;
+        this.endHeaderHeight = 50;
         if (Platform.OS == 'android') {
             this.startHeaderHeight = 100 + StatusBar.currentHeight;
             this.endHeaderHeight = 50 + StatusBar.currentHeight;
