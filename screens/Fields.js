@@ -31,15 +31,13 @@ class Fields extends Component {
 
     componentWillMount() {
         this.ScrollY = new Animated.Value(0);
-        this.startHeaderHeight = 100;
-        this.endHeaderHeight = 50;
-        this.startSearchHeight = 50;
-        this.endSearchHeight = 0;
+        this.startHeaderHeight = 50;
+        this.endHeaderHeight = 0;
+
         if (Platform.OS == 'android') {
             this.startHeaderHeight = 100 + StatusBar.currentHeight;
             this.endHeaderHeight = 50 + StatusBar.currentHeight;
-            this.startSearchHeight = 50 + StatusBar.currentHeight;
-            this.endSearchHeight = 0 + StatusBar.currentHeight;
+
         }
 
         this.animatedHeaderHeight = this.ScrollY.interpolate({
@@ -57,7 +55,7 @@ class Fields extends Component {
         this.animatedSearchTop = this.ScrollY.interpolate({
             inputRange: [0, 200],
             //outputRange:[10, -20],
-            outputRange:[this.startSearchHeight, this.endSearchHeight],
+            outputRange:[this.startSearchHeight + 10, this.endSearchHeight + 10],
             extrapolate:'clamp' 
 
         })
