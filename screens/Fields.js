@@ -55,7 +55,7 @@ class Fields extends Component {
         this.animatedSearchTop = this.ScrollY.interpolate({
             inputRange: [0, 200],
             //outputRange:[10, -20],
-            outputRange:[this.startSearchHeight + 10, this.endSearchHeight + 10],
+            outputRange:[10, -40],
             extrapolate:'clamp' 
 
         })
