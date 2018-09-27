@@ -13,16 +13,17 @@ class Card extends React.Component {
   render() {
     const { data } = this.props;
     return (
-      <View>
+      <View style={{paddingVertical: 15}}>
         <SwipeableParallaxCarousel
             data={data.images}
             navigation='true'
             navigationType='dots'     
         />
-        <Text style={{ marginVertical: 4, fontSize: 14, textAlign: "left", fontWeight: "700" }}>{data.name}</Text> 
-        <Stars style={{textAlign: "left"}}/>         
+        <View style={{paddingHorizontal: 20}}>
+          <Text style={{ marginVertical: 4, fontSize: 14, textAlign: "left", fontWeight: "700" }}>{data.name}</Text> 
+          <Stars style={{textAlign: "left"}}/>         
+        </View>
       </View> 
-
     );
   }
 }

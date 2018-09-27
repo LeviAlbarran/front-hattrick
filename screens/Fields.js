@@ -10,23 +10,30 @@ import {
     StatusBar,
     ScrollView,
     Dimensions, 
-    Animated
+    Animated,
+    Image
 } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'
 import Card from '../components/Card'
 import Tag from '../components/Tag'
 import DateModal from '../components/DateModal'
+import MapModal from '../components/MapModal'
 
 const { height, width } = Dimensions.get('window')
 class Fields extends Component {
     
     constructor(props) {
         super(props);
-        this.child = React.createRef();
+        this.childModalCalendar = React.createRef();
+        this.childModalMap = React.createRef();
     }
 
     openCalendar = () => {
-        this.child.current.openCalendar();
+        this.childModalCalendar.current.openCalendar();
+    };
+
+    openModalMaps = () => {
+        this.childModalMap.current.setModalVisible();
     };
 
     componentWillMount() {
@@ -67,8 +74,6 @@ class Fields extends Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1 }}>
-                <DateModal ref={this.child}>
-                </DateModal>
                 <Animated.View style={{ flex: 1 }}>
                     <Animated.View style={{height: this.animatedHeaderHeight, 
                         backgroundColor: 'white', 
@@ -115,7 +120,8 @@ class Fields extends Component {
 
                             }]) }
                     >
-                      <View style={{paddingHorizontal: 20, marginTop: 20}}>
+
+                      <View style={{marginTop: 20}}>
                       {
                         dataFields.map((item, index) =>(
                           <Card key = {item.id} data={item} />
@@ -123,12 +129,35 @@ class Fields extends Component {
                       }
                       </View>
                     </ScrollView>
-                </Animated.View>
+                </Animated.View>                    
+                <View elevation={7} style={{borderRadius: 50, position:'absolute',bottom:0,
+                        marginBottom:30, right: 20,
+                        shadowColor: "#000000",
+                        shadowOpacity: 0.9,
+                        shadowRadius: 2,
+                        shadowOffset: {
+                          height: 1,
+                          width: 1
+                        }
+                        }}>
+                    <TouchableOpacity onPress={this.openModalMaps}>
+                        <Image
+                            style={{width: 50, height: 50}}
+                            source={require('../images/map-icon.png')}
+                            />
+                    </TouchableOpacity>
+                </View> 
+                <DateModal ref={this.childModalCalendar}>
+                </DateModal>
+                <MapModal ref={this.childModalMap}>
+                </MapModal>
             </SafeAreaView>
-
         );
     }
+
 }
+
+
 export default Fields;
 
 const styles = StyleSheet.create({

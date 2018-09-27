@@ -19,42 +19,35 @@ class Wall extends React.Component {
       <Container>
         <Header style={{paddingTop: this.headerPadding, 
                   height: this.headerHeight, 
-                  backgroundColor: '#ffffff'}}>
+                  backgroundColor: '#ffffff',
+                  borderBottomColor: '#dddddd',
+                  borderBottomWidth: 1}}>
           <Left>
             <Icon name='ios-camera' size={25} style={{color: 'black'}}/>
           </Left>
           <Body style={{ alignItems: 'center'}}>
-            <View 
-            style={{backgroundColor: '#ffffff', height: 25, alignItems: 'center',
-            justifyContent: 'center'}}>
-              <View style={{  
-                        flexDirection:'row',
-                        }}>
-                        
-                <View style={{paddingHorizontal: 15, 
-                  paddingVertical: 5, 
-                  borderColor: '#dddddd', 
-                  borderWidth: 1, 
-                  backgroundColor: 'white', borderTopLeftRadius: 15, borderBottomLeftRadius: 15}}>
-                  <Text style={{color: 'black', fontWeight: '900', fontSize: 10}}>Seguidos</Text>
-                </View>
-                <View style={{paddingHorizontal: 15,
-                  paddingVertical: 5, 
-                  borderColor: '#dddddd', 
-                  borderLeftColor: 'white',
-                  borderWidth: 1, 
-                  backgroundColor: 'white', borderTopRightRadius: 15, borderBottomRightRadius: 15}}>
-                  <Text style={{color: 'green', fontWeight: '900', fontSize: 10}}>Comunidad</Text>
-                </View>
-              </View>
-          </View>
-
-
           </Body>
           <Right>
             <Icon name='ios-paper-plane' size={25} style={{color: 'black'}}/>
           </Right>
-        </Header> 
+        </Header>
+        
+        <View style={{flexDirection: 'row', 
+                    borderBottomColor: '#dddddd',
+                    borderBottomWidth: 1,
+                    paddingVertical: 5,
+                    justifyContent: 'flex-end' 
+                  }}>
+          <View style={{paddingHorizontal: 10, 
+                        paddingVertical: 5, 
+                        borderColor: 'green', 
+                        borderWidth: 1}}>
+            <Text style={{fontSize: 10, fontWeight: "900", color: 'green'}}>Seguidos</Text>
+          </View>
+          <View style={{paddingHorizontal: 10, paddingVertical: 5}}>
+              <Text style={{fontSize: 10, fontWeight: "900"}}>Comunidad</Text>
+          </View>
+        </View>
         <Content> 
           <CardWall/>
           <CardWall/>
